@@ -749,10 +749,10 @@ static int hid_set_idle_with_quirk(struct usb_device *dev, int ifnum, int report
 	if (quirks & HID_QUIRK_USBHID_SET_IDLE) {
 		printk(KERN_INFO "usbhid: HID set idle quirk for %04hx:%04hx\n",
 			le16_to_cpu(dev->descriptor.idVendor), le16_to_cpu(dev->descriptor.idProduct));
-		if ((idle <= 0) || (idle > 10))
+		if ((idle <= 0) || (idle > 5))
 		{
 			/* Raspberry PI's USB might miss packets, so set to (10 * 4) = 40ms USB HID idle rate to workaround sticky key issue */
-			idle = 10;
+			idle = 5;
 		}
 	}
 	
